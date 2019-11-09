@@ -46,8 +46,7 @@ message: %s
 
 me = 'Epic Castle Website <noreply@epiccastle.io>'
 to = 'Crispin Wellington <crispin@epiccastle.io>'
-cc = 'Karen Wellington <karen@epiccastle.io>'
-#cc = None
+cc = None
 
 msg['Subject'] = 'epiccastle.io contact form has a submission'
 msg['From'] = me
@@ -61,10 +60,3 @@ conn.quit()
 
 print "Status-code: 200"
 print
-
-# print """
-# <html>
-
-# <head><title>Sample CGI Script</title></head>
-
-# <body><h1>SAMPLE</h1></body></html>"""

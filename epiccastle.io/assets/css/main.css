@@ -17,6 +17,9 @@ body {
     line-height: 1;
 }
 
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
 ol, ul {
     list-style: none;
 }
@@ -2689,7 +2692,6 @@ table.alt tfoot {
 }
 
 /* Button */
-
 input[type="submit"],
 input[type="reset"],
 input[type="button"],

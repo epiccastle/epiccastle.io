@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <meta name="theme-color" content="#3E4450" />
+    <meta property="og:site_name" content="Epic Castle" />
+    <meta property="og:url" content="https://epiccastle.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Epic Castle" />
+    <meta property="og:description" content="smart devops" />
+    <meta property="og:image" content="/images/icon-192.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="192" />
+    <meta property="og:image:height" content="192" />
+    <meta name="twitter:card" content="Epic Castle" />
+    <meta name="twitter:title" content="Epic Castle" />
+    <meta name="twitter:description" content="smart devops" />
+    <meta name="twitter:image" content="/images/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Epic Castle" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3E4450" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <link rel="icon" sizes="512x512" href="/images/icon-512.png" />
+    <link rel="icon" sizes="192x192" href="/images/icon-192.png" />
+    <link rel="icon" sizes="180x180" href="/images/icon-180.png" />
+    <link rel="icon" sizes="152x152" href="/images/icon-152.png" />
+    <link rel="icon" sizes="120x120" href="/images/icon-120.png" />
+    <link rel="icon" sizes="96x96" href="/images/icon-96.png" />
+    <link rel="icon" sizes="76x76" href="/images/icon-76.png" />
+    <link rel="icon" sizes="72x72" href="/images/icon-72.png" />
+    <link rel="icon" sizes="60x60" href="/images/icon-60.png" />
+    <link rel="icon" sizes="48x48" href="/images/icon-48.png" />
+    <link rel="icon" sizes="36x36" href="/images/icon-36.png" />
+    <link rel="apple-touch-startup-image" href="/images/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="128x128" href="/images/icon-128.png" />
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/icon-96.png" />
+    <link rel="apple-touch-icon" sizes="48x48" href="/images/icon-48.png" />
+    <link id="favicon" rel="shortcut icon" href="/images/favicon.png" type="image/png" />
+    <title>Setting Up Acmetool With Route53 Hooks - Epic Castle</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-twilight.min.css" rel="stylesheet" /> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  </head>
+  <body>
+    <div id="page-wrapper">
+
+      <!-- Header -->
+      <header id="header" style="top: 0px; height: 5.5em; padding-top: 1em;">
+        <img src="images/logo.png" alt="" />
+        <h1 id="logo" style="top: 1em;"><a href="/">EPIC CASTLE</a></h1>
+        <nav id="nav" style="top: 1em;">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>
+              <a href="#">Layouts</a>
+              <ul>
+                <li><a href="left-sidebar.html">Left Sidebar</a></li>
+                <li><a href="right-sidebar.html">Right Sidebar</a></li>
+                <li><a href="no-sidebar.html">No Sidebar</a></li>
+                <li>
+                  <a href="#">Submenu</a>
+                  <ul>
+                    <li><a href="#">Option 1</a></li>
+                    <li><a href="#">Option 2</a></li>
+                    <li><a href="#">Option 3</a></li>
+                    <li><a href="#">Option 4</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="elements.html">Elements</a></li>
+            <li><a href="#" class="button special">Sign Up</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main -->
+      <div id="main" class="wrapper style1">
+        <div class="container">
+          <header>
+            <h2 style="margin-bottom:16px;">Setting Up Acmetool With Route53 Hooks</h2>
+            <div>
+              <p>Get free Let's Encrypt SSL certificates using Acmetool's DNS Hooks option when using Amazon Route53 as your DNS service provider.</p>
+            </div>
+            <div style="display:flex;justify-content:left;padding-bottom:32px;">
+              <div style="display:flex;">
+                <img src="/images/people/crispin.jpg" style="width: 48px; height: 48px; border-radius: 50%;" />
+                <div style="text-align:left;margin-left:16px;">
+                  <div>Crispin Wellington</div>
+                  <div style="font-size: 14px;margin-top:-8px;">Oct 6, 2019 · 20 min read</div>
+                </div>
+              </div>
+            </div>
+
+          </header>
+          <div class="row 150%">
+            <div class="8u 12u$(medium)">
+
+              <!-- Content -->
+              <section id="content">
+
+
+
+                <img class="fit image blog-splash" src="blog/posts/1splash.png" alt="" />
+
+                <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;float:right;margin-top:-32px;" href="https://unsplash.com/@diesektion?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Robert Anasch"><span style="display:inline-block;padding:2px 3px"><svg style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewbox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Robert Anasch</span></a>
+                <br />
+                <h3>Let's Encrypt</h3><p>Let's Encrypt is a non-profit certificate authority that can issue you SSL certificates for free. These certificates can be used to secure any type of TLS connection. Most commonly they are used to secure HTTPS web sites, but they can also be used to secure email, usenet news, file servers, chat servers or any other type of internet connection.</p><p>SSL Certificates come with three types of validation: Domain, Organization and Extended. Let's Encrypt only offers Domain Validation Certificates, but these certificates are all you need to enable high strength encryption on these connections and to allow clients to know that they are connecting to the correct domain, thus thwarting Man-in-the-middle attacks. In order to validate that you do indeed own your domain, Let's Encrypt uses a completely automatic process implemented via a protocol called ACME.</p><h3>ACME Protocol</h3><p><img src="blog/posts/1acme-catalog.png" alt="Alt text" class="fit image" /></p><p>AMCE is a basic challenge/response system. You send a request for your domain to the ACME service running on Let's Encrypt's servers and it gives you a token. Then the servers look for that token via in that domain via some method and will issue you a certificate if the token is found. You can then use that certificate.</p><p>These certificates are only valid for <strong>three months</strong> and so you will need some automatic method to renegotiate a new certificate as the old one gets close to expiry.</p><p>After trying many different tools to perform the ACME negotiation I have found that the best tool for the job is <img src="blog/posts/1https://github.com/hlandau/acme" alt="acmetool" class="fit image" />. Even before it was easily installable as a package and bundled in the main linux distributions it was well worth manually compiling it. <i>acmetool</i> gives a better experience than the other clients and I have found it to be rock solid and reliable.</p><h3>Problems with Web Server Based Verification</h3><p>Now, there are a number of ways to place that ACME token for the Let's Encrypt servers to verify. Commonly they are placed on your local webserver itself in a pre-decided directory. This is easy, but suffers from some fairly singificant problems:</p><ul><li><strong>A webserver needs to be running.</strong> If a webserver is not running for any reason then the certificates cannot be gathered or renewed. Some ACME software includes a bundled webserver that can be started as needed for this purpose. But this is still not ideal, as you end up with two sets of ACME configurations. One for servers running a webserver. And one for servers that aren't.</li><li><strong>The webserver must (at least) serve the directory over http.</strong> This complicates any http to https redirection rules you have setup in your webserver configuration.</li><li>In an idempotent provisioning environment <strong>the webserver will initially need to be started without a certificate present at all</strong> leading to a chicken and egg orchestration problem. On a server like nginx, if an SSL certificate is mentioned in the configutation but is not found on the filesystem, the server refuses to start. Thus you need either two seperate configurations, one without a certificate (before the first certificate is issued) and one with the Let's Encrypt certificate. Or you need a dummy, self-signed certificate just to prevent nginx from blowing up before the Let's Encrypt certificate is ready.</li><li><strong>The webserver needs to be running on a live IP, on a standard port and accessible from the Internet.</strong> The Let's Enrypt servers need to be able to reach your webserver. This means that you cannot use this method for any servers behind a corporate firewall or running on a non standard port.</li></ul><h3>Advantages of DNS Based Verification</h3><p>An alternative way to verify the Let's Encrypt challenge token is to serve it to the Internet in a DNS record. Although a little more intricate in its setup, I have found through experience that this method has many distinct advantages and <strong>is the method I personally recommend to my clients</strong>. Some of it's advantages are:</p><ul><li><strong>Can be used in exactly the same way on all servers, with or without a webserver present.</strong> This greatly simplifies orchestration code and the amount of information an engineer needs to load into their brain before working on the system or troubleshooting issues.</li><li><strong>It is <em>out-of-band</em> of any other service and will continue to operate even if the other service has problems.</strong> If nginx experiences trouble, or something else binds to port 80 (in the self contained webserver example), or a firewall rule is changed blocking access, the certificate process will be unaffected.</li><li><strong>Can generate certificates on machines on private IPs and behind corporate firewalls.</strong> DNS verification allows you to secure <em>all</em> your services with TLS including all your intranet and VPC services. This helps prevent the soft underbelly syndrome. Data is better protected even when it is travelling on the internal private company networks.</li></ul><p>Now lets get started...</p><h3>Install acmetool and packages</h3><p>If you are using Ubuntu 18.04 or above, then <code style="padding:0px;">acmetool</code> is already included in the system packages. Install this and we will also need <code style="padding:0px;">python3</code> and <code style="padding:0px;">python3-boto3</code> for our DNS hook script:</p><pre style="border-radius:8px;margin-bottom:32px;"><code class="language-shell-session" style="padding:0px;">$ apt-get install acmetool python3 python3-boto3
+</code></pre><h3>Configuring acmetool</h3><p>Make a folder to store the custom DNS hook script in. <em>Make sure this is outside of the acmetool state directory</em>.</p><pre style="border-radius:8px;margin-bottom:32px;"><code class="language-shell-session" style="padding:0px;">$ mkdir -p /usr/lib/acme/hooks
+</code></pre><p>Setup the <code style="padding:0px;">acme-conf.yml</code> file to look like the following. This file is found at <code style="padding:0px;">/var/lib/acme/conf/responses/acme-conf.yml</code></p><h5>/var/lib/acme/conf/responses/acme-conf.yml</h5><pre style="border-radius:8px;margin-bottom:32px;"><code class="language-yaml" style="padding:0px;"># This is a example of a response file, used with --response-file.
+# It automatically answers prompts for unattended operation.
+# grep for UniqueID in the source code for prompt names.
+#  https://github.com/hlandau/acme/search?q=UniqueID
+# Pass --response-file to all invocations, not just quickstart.
+# If you don't pass --response-file, it will be looked for at "(state-dir)/conf/responses".
+# You will typically want to use --response-file with --stdio or --batch.
+# For dialogs not requiring a response, but merely acknowledgement, specify true.
+# This file is YAML. Note that JSON is a subset of YAML.
+"acme-enter-email": "youremail@yourdomain.com"
+"acme-agreement:https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf": true
+#"acmetool-quickstart-choose-server": https://acme-staging.api.letsencrypt.org/directory
+"acmetool-quickstart-choose-server": https://acme-v01.api.letsencrypt.org/directory
+"acmetool-quickstart-choose-method": hooks
+# This is only used if "acmetool-quickstart-choose-method" is "webroot".
+"acmetool-quickstart-webroot-path": "/var/run/acme/acme-challenge"
+"acmetool-quickstart-complete": true
+"acmetool-quickstart-install-cronjob": true
+"acmetool-quickstart-install-haproxy-script": false
+"acmetool-quickstart-install-redirector-systemd": false
+"acmetool-quickstart-key-type": rsa
+"acmetool-quickstart-rsa-key-size": 4096
+"acmetool-quickstart-ecdsa-curve": nistp256
+</code></pre><p>Setup the <code style="padding:0px;">target</code> file to look like the following. This file is found at <code style="padding:0px;">/var/lib/acme/conf/target</code></p><h5>/var/lib/acme/conf/target</h5><pre style="border-radius:8px;margin-bottom:32px;"><code class="language-yaml" style="padding:0px;">request:
+  provider: https://acme-v01.api.letsencrypt.org/directory
+  key:
+    type: rsa
+</code></pre><p>Now we are ready to install the main Route53 DNS hook script.</p><h5>/usr/lib/acme/hooks/route53</h5><pre style="border-radius:8px;margin-bottom:32px;"><code class="language-python" style="padding:0px;">#!/usr/bin/env python3
+"""
+Based on from: https://gist.github.com/ramirovjr/181979298149c5e74887f30fe09dcc71
+modified to support acmetool by crispin@epiccastle.io
+requires environment variable ACME_HOSTED_ZONE to contain route53 Zone ID
+"""
+import os
+import sys
+import boto3
+from time import sleep
+
+def setup_dns(domain, txt_challenge, hosted_zone_id):
+    session = boto3.Session()
+    client = session.client("route53")
+
+    resp = client.change_resource_record_sets(
+        HostedZoneId=hosted_zone_id,
+        ChangeBatch={
+            'Changes': [{
+                'Action': 'UPSERT',
+                'ResourceRecordSet': {
+                    'Name': '_acme-challenge.{0}'.format(domain),
+                    'Type': 'TXT',
+                    'TTL': 60,
+                    'ResourceRecords': [{
+                        'Value': '"{0}"'.format(txt_challenge)}]}}]})
+
+    # wait 30 seconds for DNS update
+    sleep(30)
+
+def delete_dns(domain, txt_challenge, hosted_zone_id):
+    session = boto3.Session()
+    client = session.client("route53")
+
+    resp = client.change_resource_record_sets(
+        HostedZoneId=hosted_zone_id,
+        ChangeBatch={
+            'Changes': [{
+                'Action': 'DELETE',
+                'ResourceRecordSet': {
+                    'Name': '_acme-challenge.{0}'.format(domain),
+                    'Type': 'TXT',
+                    'TTL': 60,
+                    'ResourceRecords': [{
+                        'Value': '"{0}"'.format(txt_challenge)}]}}]})
+
+if __name__ == "__main__":
+    assert len(sys.argv) &gt; 3, "not enough command line arguments passed in"
+
+    hook = sys.argv[1]
+    domain = sys.argv[2]
+    txt_challenge = sys.argv[4]
+
+    if 'ACME_HOSTED_ZONE' not in os.environ:
+        raise Exception("Environment variable ACME_HOSTED_ZONE not defined")
+
+    hosted_zone_id = os.environ['ACME_HOSTED_ZONE']
+
+    if hook == "challenge-dns-start":
+        setup_dns(domain, txt_challenge, hosted_zone_id)
+    elif hook == "challenge-dns-stop":
+        delete_dns(domain, txt_challenge, hosted_zone_id)
+</code></pre><p>Now, in order to run this script needs the following environment variables set:</p><ul><li><strong>ACME_HOOKS_DIR</strong> The location of our hooks directory <code style="padding:0px;">/usr/lib/acme/hooks/</code></li><li><strong>ACME_HOSTED_ZONE</strong> The Route53 Zone ID of the domain hosting the DNS records</li><li><strong>AWS_ACCESS_KEY_ID</strong> An AWS IAM access key ID that will be used to alter the DNS records</li><li><strong>AWS_SECRET_ACCESS_KEY</strong> The IAM secret key for that identity.</li></ul><p>Finally run the quickstart acmetool command in batch mode to initialise the acmetool state directory:</p><pre style="border-radius:8px;margin-bottom:32px;"><code class="language-shell-session" style="padding:0px;">$ acmetool --batch quickstart
+</code></pre><p>Now that is all setup, let's go through setting up the IAM identity in AWS and finding out our Zone ID</p><h3>Setting up an IAM identity to alter Route53 records</h3><p><img src="blog/posts/1iam-add-user.png" alt="IAM Add User" class="fit image" /></p><p>Login to your AWS web console, and navigate to the IAM dashboard. Click on <code style="padding:0px;">Users</code> and then click on the <code style="padding:0px;">Add user</code> button:</p><hr /><p><img src="blog/posts/1iam-add-user-1.png" alt="IAM Add User 1" class="fit image" /></p><p>On the next screen enter a name for the identity. Here I have entered <code style="padding:0px;">acme</code> but any name will do so long as it is valid and not already used. Under Access type select the checkbox next to <strong>Programmatic access</strong>. Then click the <code style="padding:0px;">Next</code> button.</p><hr /><p><img src="blog/posts/1iam-add-user-2.png" alt="IAM Add User 2" class="fit image" /></p><p>On the second screen click on <strong>Attach existing policies directly</strong>. Then in the Filter policies search box enter <code style="padding:0px;">Route53DomainsFull</code> to filter the policy list down to find the correct policy. Then mark the checkbox near the <strong>AmazonRoute53DomainsFullAccess</strong> policy and click the <strong>Next</strong> button.</p><hr /><p><img src="blog/posts/1iam-add-user-3.png" alt="IAM Add User 3" class="fit image" /></p><p>Adding a tag is optional but it can help others discover what the IAM identity is used for, so here I have added a tag <code style="padding:0px;">description</code> with a value of <code style="padding:0px;">used by acmetool to set lets encrypt challenge string in Route53 DNS records</code>. Click <strong>Next</strong> to move on.</p><hr /><p><img src="blog/posts/1iam-add-user-4.png" alt="IAM Add User 4" class="fit image" /></p><p>Review the user's details. They should look like the following. If everything is correct click the <strong>Create user</strong> button.</p><hr /><p><img src="blog/posts/1iam-add-user-5.png" alt="IAM Add User 5" class="fit image" /></p><p>The final screen will give you the new user's access key ID and secret. But to show the secret you will need to click the <strong>Show</strong> link. So go ahead and do that now.</p><hr /><p><img src="blog/posts/1iam-add-user-5-show.png" alt="IAM Add User 5 Show Credentials" class="fit image" /></p><p>This is the only time the key ID and the secret key will be available to you. So you need to save both these values now for later. You can place them into your ansible vault, hashicorp vault, chef databag, or whatever devops secret encryption storage you are using.</p><p><strong>Note:</strong> I left the key ID and secret unblurred in these screenshots so you can see what form they have so as to reduce any confusion. But these are not actually valid IAM access credentials that you can use to hack my account! I am not that silly!</p><h3>Finding your Route53 domain Zone ID</h3><p><img src="blog/posts/1route53-dashboard.png" alt="IAM Route53 Dashboard" class="fit image" /></p><p>Navigate to the Route53 dashboard webpage. Click <strong>Hosted zones</strong> on the left panel or the central dashboard area.</p><hr /><p><img src="blog/posts/1route53-zoneid.png" alt="IAM Route53 ZoneID" class="fit image" /></p><p>On the hosted zones page you will see a list of the Hosted Zone IDs down the right hand side. There is one Zone ID for each Zone. Each Zone ID begins with the letter Z and is 13 or 14 characters long. You will need to record the Zone ID for the zone that your Let's Encrypt certificate's domain will be in.</p><h3>Setup Cron Running Of acmetool Renewal</h3><p><code style="padding:0px;">acmetool</code> will need to be run regularly in order to update any certificates that are coming up for renewal. Let's Encrypt currently issues 90 day certificates. acmetool will try to renew certificates automatically once they are 30 days from expiry, or two thirds through their validity period. Put the following in <code style="padding:0px;">/etc/cron.d/acmetool</code>:</p><h5>/usr/lib/acme/hooks/route53</h5><pre style="border-radius:8px;margin-bottom:32px;"><code class="language-shell" style="padding:0px;">SHELL=/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+MAILTO=root
+ACME_HOOKS_DIR="/usr/lib/acme/hooks/"
+ACME_HOSTED_ZONE="&lt;&lt; zone id here &gt;&gt;"
+AWS_ACCESS_KEY_ID="&lt;&lt; aws access key id here &gt;&gt;"
+AWS_SECRET_ACCESS_KEY="&lt;&lt; aws secret access key here &gt;&gt;"
+23 0 * * * root /usr/bin/acmetool --batch reconcile
+</code></pre><p>Replace the values inside the double angled brackets with your values</p><p><strong>Note:</strong> acmetool will exit with an error message with nonzero exit status if it cannot renew a certificate. Ensure your system is configured so that you get notifications of failing cronjobs.</p><h3>Gather the certificates</h3><p>Now we are ready to gather the certificates we need. Export the environment variables into the shell, and then run <code style="padding:0px;">acmetool want</code> to gather the certificates. Replace my.domain.com with the fully qualified domain name you want the certificate for.</p><pre style="border-radius:8px;margin-bottom:32px;"><code class="language-shell-session" style="padding:0px;">$ export ACME_HOOKS_DIR="/usr/lib/acme/hooks/"
+$ export ACME_HOSTED_ZONE="&lt;&lt; zone id here &gt;&gt;"
+$ export AWS_ACCESS_KEY_ID="&lt;&lt; aws access key id here &gt;&gt;"
+$ export AWS_SECRET_ACCESS_KEY="&lt;&lt; aws secret access key here &gt;&gt;"
+$ acmetool --batch want my.domain.com
+</code></pre><p>Now, if nothing went wrong, you should find your certificate(s) and private key at <code style="padding:0px;">/var/lib/acme/live/domain.name</code></p><pre style="border-radius:8px;margin-bottom:32px;"><code class="language-shell-session" style="padding:0px;">$ ls /var/lib/acme/live/my.domain.com/
+cert  chain  fullchain  privkey  url
+</code></pre><h3>Troubleshooting</h3><p>If something fails, even inside the cron job, you can examine what last went wrong with additional information with the following:</p><pre style="border-radius:8px;margin-bottom:32px;"><code class="language-shell-session" style="padding:0px;">$ acmetool --xlog.severity=debug
+</code></pre><p>This will show you all the steps that acmetool took to try to verify your domain and the results of those steps.</p><h3>Example Setup For Nginx</h3><p>Here is a quick example section from an nginx sites-enabled config file showing the use of that certificate. Use this as a reference for ither servers or applications.</p><pre style="border-radius:8px;margin-bottom:32px;"><code class="language-nginx" style="padding:0px;"># HTTP Server
+server {
+    listen 80;
+    server_name  my.domain.com;
+
+    # redirect http traffic to https
+    location / {
+      return 301 https://$host$request_uri;
+    }
+}
+
+# HTTPS Server
+server {
+   listen 443 ssl;
+   server_name my.domain.com;
+
+   # our lets encrypt certificate chain and private key
+   ssl_certificate      /var/lib/acme/live/my.domain.com/fullchain;
+   ssl_certificate_key  /var/lib/acme/live/my.domain.com/privkey;
+
+   ssl_session_cache    shared:SSL:1m;
+   ssl_session_timeout  5m;
+
+   # disable weak and vulnerable ciphers
+   ssl_ciphers "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:ECDHE-RSA-DES-CBC3-SHA:ECDHE-ECDSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES";
+   ssl_prefer_server_ciphers  on;
+
+   # you may want some custome diffie hellman parameters to be extra secure
+   ssl_dhparam /etc/nginx/dhparams.pem;
+
+   # logging
+   access_log /var/log/nginx/my.domain.com_access.log main;
+   error_log /var/log/nginx/my.domain.com_error.log;
+
+   # our documents location
+   root /var/www/my.domain.com/public;
+}
+</code></pre><p>This should get you up and running with Route53 and acmetool. I hope you had success!</p>
+              </section>
+
+            </div>
+
+            <section>
+
+            <div class="8u 12u$(medium)">
+<span class="right"><img src="/images/people/crispin.jpg" style="width: 48px; height: 48px; border-radius: 50%;" /></span>
+              <h4>About Crispin Wellington</h4>
+              <p>Crispin Wellington is a Software Developer and System Operations expert with over 25 years of professional experience. As well as being the founder of <a href="https://epiccastle.io">Epic Castle</a> he is the founder and developer of <a href="https://gammon.io">gammon.io</a>. He is based in Perth, Australia and is a husband and father. As Epic Castle's principal consultant he is available to assist you in solving your software, operations and service problems.
+            </p></div>
+
+            <div class="8u 12u$(medium)">
+              <h4>Don't miss the next update</h4>
+              <p>Make sure you don't miss the next article. Get the latest content first.</p>
+              <form method="post" action="https://lists.epiccastle.io/mailman/subscribe/epiccastle-blog">
+                <div class="row uniform 50%">
+                  <div class="6u$ 12u$(xsmall)">
+                    <input type="email" name="email" id="email" value="" placeholder="Email" />
+                  </div>
+                  <div class="6u$ 12u$(xsmall)">
+                    <input type="submit" name="email-bitton" class="button special" value="Join Us" />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </section></div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <ul class="copyright">
+          <li>© Epic Castle. All rights reserved.</li>
+        </ul>
+      </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  </body>
+
+</html>

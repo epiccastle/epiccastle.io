@@ -74,7 +74,8 @@
     :image "postgres.png"}])
 
 (selmer "templates/site.html"
-        {:body
+        {:landing true
+         :body
          (as-html
           [[:section#banner
             [:div.content

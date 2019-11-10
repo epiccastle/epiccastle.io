@@ -44,6 +44,11 @@
       <link rel="stylesheet" href="/assets/css/main.css" />
       <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
       <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+      {% if extra-styles %}
+      {% for style in extra-styles %}
+      <link href="{{style}}" rel="stylesheet"/>
+      {% endfor %}
+      {% endif %}
       {% if title %}
       <title>Epic Castle - {{title}}</title>
       {% else %}
@@ -90,5 +95,10 @@
     <script src="/assets/js/responsiveCarousel.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="/assets/js/main.js"></script>
+    {% if extra-scripts %}
+    {% for script in extra-scripts %}
+    <script src="{{script}}"></script>
+    {% endfor %}
+    {% endif %}
   </body>
 </html>

@@ -2,6 +2,10 @@
 
 Source code for website for https://epiccastle.io
 
+## Dependency
+
+The site is built using [bootleg](https://github.com/retrogradeorbit/bootleg). Install bootleg using the instructions on that page.
+
 ## Building
 
     make build

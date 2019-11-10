@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+      <meta name="theme-color" content="#3E4450" />
+      <meta property="og:site_name" content="Epic Castle" />
+      <meta property="og:url" content="https://epiccastle.io/" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Epic Castle" />
+      <meta property="og:description" content="smart devops" />
+      <meta property="og:image" content="/images/icon-192.png" />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="192" />
+      <meta property="og:image:height" content="192" />
+      <meta name="twitter:card" content="Epic Castle">
+      <meta name="twitter:title" content="Epic Castle">
+      <meta name="twitter:description" content="smart devops">
+      <meta name="twitter:image" content="/images/icon-192.png">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-title" content="Epic Castle">
+      <meta name="apple-mobile-web-app-status-bar-style" content="#3E4450">
+      <meta name="HandheldFriendly" content="true" />
+      <meta name="format-detection" content="telephone=no" />
+      <!-- <link rel="manifest" href="/manifest.json"> -->
+      <link rel="icon" sizes="512x512" href="/images/icon-512.png">
+      <link rel="icon" sizes="192x192" href="/images/icon-192.png">
+      <link rel="icon" sizes="180x180" href="/images/icon-180.png">
+      <link rel="icon" sizes="152x152" href="/images/icon-152.png">
+      <link rel="icon" sizes="120x120" href="/images/icon-120.png">
+      <link rel="icon" sizes="96x96" href="/images/icon-96.png">
+      <link rel="icon" sizes="76x76" href="/images/icon-76.png">
+      <link rel="icon" sizes="72x72" href="/images/icon-72.png">
+      <link rel="icon" sizes="60x60" href="/images/icon-60.png">
+      <link rel="icon" sizes="48x48" href="/images/icon-48.png">
+      <link rel="icon" sizes="36x36" href="/images/icon-36.png">
+      <link rel="apple-touch-startup-image" href="/images/icon-192.png">
+      <link rel="apple-touch-icon" sizes="192x192" href="/images/icon-192.png">
+      <link rel="apple-touch-icon" sizes="128x128" href="/images/icon-128.png">
+      <link rel="apple-touch-icon" sizes="96x96" href="/images/icon-96.png">
+      <link rel="apple-touch-icon" sizes="48x48" href="/images/icon-48.png">
+      <link id="favicon" rel="shortcut icon" href="/images/favicon.png" type="image/png">
+      <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+      <link rel="stylesheet" href="assets/css/main.css" />
+      <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+      <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+      {% if title %}
+      <title>Epic Castle - {{title}}</title>
+      {% else %}
+      <title>Epic Castle</title>
+      {% endif %}
+  </head>
+  <body class="landing">
+    <div id="page-wrapper">
+
+      <!-- Header -->
+      <header id="header">
+        <img src="images/logo.png" alt="" />
+        <h1 id="logo">
+          <a href="/">EPIC CASTLE</a>
+        </h1>
+      </header>
+
+      {{body|safe}}
+
+      <!-- Footer -->
+      <footer id="footer">
+        <ul class="copyright">
+          <li>&copy; Epic Castle. All rights reserved.</li>
+        </ul>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.4.1.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/responsiveCarousel.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

@@ -41,7 +41,7 @@
       <link rel="apple-touch-icon" sizes="48x48" href="/images/icon-48.png">
       <link id="favicon" rel="shortcut icon" href="/images/favicon.png" type="image/png">
       <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-      <link rel="stylesheet" href="assets/css/main.css" />
+      <link rel="stylesheet" href="/assets/css/main.css" />
       <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
       <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
       {% if title %}
@@ -50,12 +50,12 @@
       <title>Epic Castle</title>
       {% endif %}
   </head>
-  <body class="landing">
+  <body{% if landing %} class="landing"{% endif %}>
     <div id="page-wrapper">
 
       <!-- Header -->
       <header id="header">
-        <img src="images/logo.png" alt="" />
+        <img src="/images/logo.png" alt="" />
         <h1 id="logo">
           <a href="/">EPIC CASTLE</a>
         </h1>
@@ -74,14 +74,14 @@
     </div>
 
     <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.4.1.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/skel.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/responsiveCarousel.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery-migrate-1.4.1.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/jquery.dropotron.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/responsiveCarousel.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
   </body>
 </html>

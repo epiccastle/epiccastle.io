@@ -14,4 +14,4 @@ deploy: build
 epiccastle.io/%.html: epiccastle.io/%.clj epiccastle.io/templates/site.html
 	bootleg $< > $@
 
-build: epiccastle.io/index.html
+build: epiccastle.io/index.html epiccastle.io/contact.html

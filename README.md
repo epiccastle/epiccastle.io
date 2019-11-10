@@ -2,6 +2,10 @@
 
 Source code for website for https://epiccastle.io
 
+## Building
+
+    make build
+
 ## Testing
 
 1. Run the test server with:

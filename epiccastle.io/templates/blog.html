@@ -1,0 +1,55 @@
+<!-- Main -->
+<div id="main" class="wrapper style1">
+  <div class="container">
+    <header>
+      <h2 style="margin-bottom:16px;">{{ title }}</h2>
+      <div>
+        <p>{{ blurb }}</p>
+      </div>
+      <div style="display:flex;justify-content:left;padding-bottom:32px;">
+        <div style="display:flex;">
+          <img src="/images/people/crispin.jpg" style="width: 48px; height: 48px; border-radius: 50%;" />
+          <div style="text-align:left;margin-left:16px;">
+            <div>{{ author }}</div>
+            <div style="font-size: 14px;margin-top:-8px;">{{ date }} · {{ read-time }} min read</div>
+          </div>
+        </div>
+      </div>
+
+    </header>
+    <div class="row 150%">
+      <div class="12u 12u$(medium)">
+
+        <!-- Content -->
+        <section id="content">
+          <img class="blog-splash" src="{{ splash.image }}" alt="" />
+          <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;float:right;margin-top:-32px;" href="{{ splash.url }}" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from {{ splash.author }}"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">{{ splash.author }}</span></a>
+          <br/>
+          {{body|safe}}
+        </section>
+      </div>
+
+      <section>
+        <div class="12u 12u$(medium)">
+          <span class="right"><img src="/images/people/crispin.jpg"/ style="width: 48px; height: 48px; border-radius: 50%;"></span>
+          <h4>About Crispin Wellington</h4>
+          <p>Crispin Wellington is a Software Developer and System Operations expert with over 25 years of professional experience. As well as being the founder of <a href="https://epiccastle.io">Epic Castle</a> he is the founder and developer of <a href="https://gammon.io">gammon.io</a>. He is based in Perth, Australia and is a husband and father. As Epic Castle's principal consultant he is available to assist you in solving your software, operations and service problems.
+        </div>
+
+        <div class="8u 12u$(medium)">
+          <h4>Don't miss the next update</h4>
+          <p>Make sure you don't miss the next article. Get the latest content first.</p>
+          <form method="post" action="https://lists.epiccastle.io/mailman/subscribe/epiccastle-blog">
+            <div class="row uniform 50%">
+              <div class="6u$ 12u$(xsmall)">
+                <input type="email" name="email" id="email" value="" placeholder="Email" />
+              </div>
+              <div class="6u$ 12u$(xsmall)">
+                <input type="submit" name="email-bitton" class="button special" value="Join Us"/>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>

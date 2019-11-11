@@ -2,7 +2,7 @@
 
 Let's Encrypt is a non-profit certificate authority that can issue you SSL certificates for free. These certificates can be used to secure any type of TLS connection. Most commonly they are used to secure HTTPS web sites, but they can also be used to secure email, usenet news, file servers, chat servers or any other type of internet connection.
 
-SSL Certificates come with three types of validation: Domain, Organization and Extended. Let's Encrypt only offers Domain Validation Certificates, but these certificates are all you need to enable high strength encryption on these connections and to allow clients to know that they are connecting to the correct domain, thus thwarting Man-in-the-middle attacks. In order to validate that you do indeed own your domain, Let's Encrypt uses a completely automatic process implemented via a protocol called ACME.
+SSL Certificates come with three types of validation: Domain, Organization and Extended. Let's Encrypt only offers Domain Validation Certificates, but these certificates are all you need to enable high strength encryption on these connections and to allow clients to know that they are connecting to the correct domain, thus thwarting Man-in-the-middle attacks. In order to validate that you do indeed own the domain, Let's Encrypt uses a completely automatic process implemented via a protocol called ACME.
 
 ### ACME Protocol
 

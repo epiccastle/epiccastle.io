@@ -83,7 +83,7 @@
               [:h2 "Building or scaling your enterprise?"]
               [:p "Reduce pain, free your time and grow" "\u00A0"
                [:br] "more quickly with smart devops."]
-              [:ul.actions {:style "margin-top: 3em;"}
+              [:ul.actions {:style {:margin-top "3em"}}
                [:li [:a.button {:href "/contact.html"} "Contact Us"]]]]]
             [:a.goto-next.scrolly {:href "#four"} "Next"]]
 
@@ -97,7 +97,8 @@
                (for [{:keys [icon heading body class]} icon-layout]
                  [:section {:class class}
                   [:span.icon.alt.major
-                   [:img {:style "width:50%;vertical-align:middle;"
+                   [:img {:style {:width "50%"
+                                  :vertical-align "middle"}
                           :src (str "/images/" icon)}]]
                   [:h3 heading]
                   [:p body]])]]
@@ -115,6 +116,7 @@
               [:div.crsl-wrap
                (for [{:keys [width margin-top image]} carousel-layout]
                  [:figure.crsl-item
-                  [:img {:style (str "vertical-position:middle;width:" (or width "100%")
-                                     ";margin-top:" (or margin-top "1em") ";")
+                  [:img {:style {:vertical-position "middle"
+                                 :width (or width "100%")
+                                 :margin-top (or margin-top "1em")}
                          :src (str "/images/logos/" image)}]])]]]]])})

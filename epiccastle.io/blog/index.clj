@@ -36,23 +36,29 @@
                          splash
                          body]}] (sort posts)]
           (do (symlink snake-title (str n))
-              [:div {:style "cursor:pointer;"
+              [:div {:style {:cursor "pointer"}
                      :onclick (str "window.location='" snake-title "'")}
-               [:h2 {:style "margin-bottom: 16px;"} title]
-               [:div {:style "display:flex;justify-content:left;padding-bottom:32px;"}
-                [:div {:style "display:flex;"}
+               [:h2 {:style {:margin-bottom "16px"}} title]
+               [:div {:style {:display "flex"
+                              :justify-content "left"
+                              :padding-bottom "32px"}}
+                [:div {:style {:display "flex"}}
                  [:img {:src "/images/people/crispin.jpg"
-                        :style "width: 48px; height: 48px; border-radius: 50%;"}]
-                 [:div {:style "text-align:left;margin-left:16px;"}
+                        :style {:width "48px"
+                                :height "48px"
+                                :border-radius "50%"}}]
+                 [:div {:style {:text-align "left"
+                                :margin-left "16px"}}
                   [:div author]
-                  [:div {:style "font-size: 14px;margin-top:-8px;"}
+                  [:div {:style {:font-size "14px"
+                                 :margin-top "-8px"}}
                    date]]]]
                [:img.image.fit.right
                 {:src (str n "/" (:image splash))
-                 :style "width: 25%;"
+                 :style {:width "25%"}
                  }]
                [:div [:b blurb]]
-               [:div {:style "font-size: 10pt;"} (overview body)]
+               [:div {:style {:font-size  "10pt"}} (overview body)]
                ]))]]]
   (selmer "../templates/site.html"
           {:title "Blog Posts"

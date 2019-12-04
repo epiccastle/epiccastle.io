@@ -8,15 +8,22 @@
              [:section
               [:h2 "Contact Us"]
 
-              [:div#mask-overlay {:style "width: 100%; height: 400px; position: absolute; pointer-events: none; background-color: #1C1D26; opacity: 0; transition: opacity .3s ease-in-out;"}
-               [:div.center {:style "padding-top:9em;"}
+              [:div#mask-overlay {:style {:width "100%"
+                                          :height "400px"
+                                          :position "absolute"
+                                          :pointer-events "none"
+                                          :background-color "#1C1D26"
+                                          :opacity "0"
+                                          :transition "opacity .3s ease-in-out"}}
+               [:div.center {:style {:padding-top "9em"}}
                 [:h3#result "Message Sent!"]
                 [:h4#result-sub "Contact us "
                  [:a {:href "mailto:contact@epiccastle.io"
-                      :style "color: #D59563; text-decoration: underline;"}
+                      :style {:color "#D59563"
+                              :text-decoration "underline"}}
                   "manually!"]]]]
 
-              [:div#contact-us-form {:style "transition: opacity 0.3s ease-in-out;"}
+              [:div#contact-us-form {:style {:transition "opacity 0.3s ease-in-out" }}
                [:form
                 [:div.row.uniform.50%
                  [:div {:class "6u 12u$(xsmall)"}

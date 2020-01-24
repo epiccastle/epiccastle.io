@@ -40,8 +40,3 @@ spire-analysis:
 
 epiccastle.io/blog/%/splash-20.png: epiccastle.io/blog/%/splash.png
 	convert $< -resize 1000000@ $@
-
-epiccastle.io/images/fa-%.png: svg/%.png
-	cp $< $@
-
-fa-thumbs: epiccastle.io/images/fa-code-branch.png epiccastle.io/images/fa-cogs.png epiccastle.io/images/fa-paper-plane.png epiccastle.io/images/fa-credit-card.png epiccastle.io/images/fa-cloud.png epiccastle.io/images/fa-bell.png epiccastle.io/images/fa-angle-left.png epiccastle.io/images/fa-angle-right.png epiccastle.io/images/fa-bars.png

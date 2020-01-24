@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+@import url("https://fonts.googleapis.com/css?family=Lato|Montserrat|Varela+Round");
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
@@ -8,6 +8,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font: inherit;
     vertical-align: baseline;
 }
+
+div {
+    font-family: 'Lato', sans-serif;
+}
+
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
@@ -1616,14 +1621,16 @@ em, i {
 }
 
 p {
-    margin: 0 0 2em 0;
+    margin: 0 0 1em 0;
+    font-family: 'Lato', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
     font-weight: 900;
     line-height: 1em;
-    margin: 0 0 1em 0;
+    margin: 20px 0 10px 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1631,8 +1638,14 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     border: 0;
 }
 
-h2 {
+h1 {
     font-size: 2em;
+    line-height: 1.5em;
+    letter-spacing: -0.025em;
+}
+
+h2 {
+    font-size: 1.6em;
     line-height: 1.5em;
     letter-spacing: -0.025em;
 }
@@ -1699,7 +1712,7 @@ pre {
     -webkit-overflow-scrolling: touch;
     font-family: "Courier New", monospace;
     font-size: 0.9em;
-    margin: 0 0 2em 0;
+    margin: 1em 0 1em 0;
 }
 
 pre code {
@@ -3095,7 +3108,7 @@ body.is-touch .spotlight {
 /* Wrapper */
 
 .wrapper {
-    padding: 6em 0 4em 0;
+    padding: 3em 0 3em 0;
 }
 
 .wrapper.style2 {
@@ -3268,7 +3281,7 @@ body.landing .dropotron.level-0 {
 /* Header */
 
 #page-wrapper {
-    padding-top: 3.5em;
+    padding-top: 5em;
 }
 
 #header {
@@ -3504,6 +3517,89 @@ span.next {
 body.is-touch #banner {
     background-attachment: scroll;
 }
+
+/* Spire Banner */
+
+#spire-banner {
+    background-attachment: fixed;
+    background-color: #272833;
+    background-image: url("/images/banner-crop.jpg");
+    background-position: center center;
+    background-size: cover;
+    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
+    min-height: 30vh;
+    position: relative;
+    text-align: center;
+    z-index: 21;
+}
+
+#spire-banner:before {
+    content: '';
+    display: inline-block;
+    height: 30vh;
+    vertical-align: middle;
+    width: 1%;
+}
+
+#spire-banner:after {
+    background-image: -moz-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75)), url("images/overlay.png");;
+    background-image: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75)), url("images/overlay.png");;
+    background-image: -ms-linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75)), url("images/overlay.png");;
+    background-image: linear-gradient(top, rgba(23, 24, 32, 0.75), rgba(23, 24, 32, 0.75)), url("images/overlay.png");;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#spire-banner .content {
+    display: inline-block;
+    margin-right: 1%;
+    max-width: 95%;
+    padding: 6em;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 1;
+}
+
+#spire-banner .content header {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#spire-banner .content header h2 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+#spire-banner .content header p {
+    margin: 0.5em 0 0 0;
+    top: 0;
+}
+
+#spire-banner .content .image {
+    border-radius: 100%;
+    display: inline-block;
+    height: 18em;
+    margin-left: 3em;
+    vertical-align: middle;
+    width: 18em;
+}
+
+#spire-banner .content .image img {
+    border-radius: 100%;
+    display: block;
+    width: 100%;
+}
+
+body.is-touch #spire-banner {
+    background-attachment: scroll;
+}
+
 
 /* Footer */
 
@@ -3867,7 +3963,7 @@ body.is-touch #banner {
     #titleBar .toggle {
         text-decoration: none;
         height: 60px;
-        left: 0;
+        right: 0;
         position: absolute;
         top: 0;
         width: 90px;
@@ -3885,14 +3981,14 @@ body.is-touch #banner {
     }
 
     #titleBar .toggle:before {
-        background: #a28a77;
+        /* background: #a28a77; */
         color: rgba(255, 255, 255, 0.5);
         content: '\f0c9';
         font-weight: 900;
         display: block;
         font-size: 18px;
         height: 44px;
-        left: 0;
+        right: 0;
         line-height: 44px;
         position: absolute;
         text-align: center;
@@ -3905,10 +4001,10 @@ body.is-touch #banner {
         -webkit-backface-visibility: hidden;
         -ms-backface-visibility: hidden;
         backface-visibility: hidden;
-        -moz-transform: translateX(-275px);
-        -webkit-transform: translateX(-275px);
-        -ms-transform: translateX(-275px);
-        transform: translateX(-275px);
+        -moz-transform: translateX(100vw);
+        -webkit-transform: translateX(100vw);
+        -ms-transform: translateX(100vw);
+        transform: translateX(100vw);
         -moz-transition: -moz-transform 0.5s ease;
         -webkit-transition: -webkit-transform 0.5s ease;
         -ms-transition: -ms-transform 0.5s ease;
@@ -3919,7 +4015,7 @@ body.is-touch #banner {
         overflow-y: auto;
         position: fixed;
         top: 0;
-        width: 275px;
+        width: 197px;
         z-index: 10002;
         background: #181920;
         padding: 0.75em 1.25em;
@@ -3974,24 +4070,24 @@ body.is-touch #banner {
     }
 
     body.navPanel-visible #page-wrapper {
-        -moz-transform: translateX(275px);
-        -webkit-transform: translateX(275px);
-        -ms-transform: translateX(275px);
-        transform: translateX(275px);
+        -moz-transform: translateX(-197px);
+        -webkit-transform: translateX(-197px);
+        -ms-transform: translateX(-197px);
+        transform: translateX(-197px);
     }
 
     body.navPanel-visible #titleBar {
-        -moz-transform: translateX(275px);
-        -webkit-transform: translateX(275px);
-        -ms-transform: translateX(275px);
-        transform: translateX(275px);
+        -moz-transform: translateX(-197px);
+        -webkit-transform: translateX(-197px);
+        -ms-transform: translateX(-197px);
+        transform: translateX(-197px);
     }
 
     body.navPanel-visible #navPanel {
-        -moz-transform: translateX(0);
-        -webkit-transform: translateX(0);
-        -ms-transform: translateX(0);
-        transform: translateX(0);
+        -moz-transform: translateX(calc(100vw - 197px));
+        -webkit-transform: translateX(calc(100vw - 197px));
+        -ms-transform: translateX(calc(100vw - 197px));
+        transform: translateX(calc(100vw - 197px));
     }
 
     /* Footer */

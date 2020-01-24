@@ -36,6 +36,28 @@
             hideDelay: 350
         });
 
+        var change_banner_title = function() {
+            pos = document.body.scrollTop || document.documentElement.scrollTop;
+            heading = $(".title-heading");
+            heading_text = heading.text()
+            if(heading_text && pos>(heading.offset().top - 48))
+            {
+                $("#logo-heading").text(heading_text);
+                $("#logo-heading-small").text(heading_text);
+            }
+            else
+            {
+                $("#logo-heading").text("Epic Castle");
+                $("#logo-heading-small").text("Epic Castle");
+            }
+        };
+
+        // on load set the title correctly
+        change_banner_title();
+
+        // changing title
+        $window.scroll(change_banner_title);
+
         // Off-Canvas Navigation.
 
         // Title Bar.

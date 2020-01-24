@@ -62,12 +62,13 @@
 
         // Title Bar.
         $(
-            '<div id="titleBar">' +
+            '<div id="titleBar" style="overflow: hidden;">' +
                 '<header>'+
-                '<img src="/images/logo.png" alt="" style="width: 1.5em; margin: 0.125em 0.25em 0 1em;"/>' +
-                '<h1 id="logo" style="top: 0.5em;">' +
-                '<a href="/">EPIC CASTLE</a>'+
+                '<a href="/" style="border-bottom: none;"><img src="/images/logo.png" alt="" style="width: 1.5em; margin: 0.125em 0.25em 0 1em;"/></a>' +
+                '<h1 id="logo-heading-small" style="top: 0.4em; line-height: 2em;">' +
+                'Epic Castle' +
                 '</h1>' +
+                '<a href="#navPanel" style="border-bottom: none; float: right; padding-right: 16px; padding-top: 7px; padding-left: 16px; padding-bottom: 7px;"><img src="/images/fa-bars.png" style="width: 16px; opacity: 0.5;"/></a>' +
                 '</header>' +
                 '</div>'
         ).appendTo($body);

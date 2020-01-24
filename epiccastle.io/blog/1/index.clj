@@ -23,16 +23,22 @@
                   :body (-> body
                             (enlive/at [:img] (enlive/add-class "image" "fit")
                                        [:pre] (enlive/set-attr "style" "border-radius:8px;margin-bottom:32px;")
-                                       [:code] (enlive/set-attr "style" "adding:0px;"))
+                                       [:code] (enlive/set-attr "style" "padding:0px;")
+                                       )
                             (convert-to :html)))
       ]
   (selmer "../../templates/site.html"
           {:title title
            :body (-> (selmer "../../templates/blog.html" vars)
-                     (enlive/at [:img.blog-splash] (enlive/add-class "image" "fit"))
+                     (enlive/at [:img.blog-splash] (enlive/add-class "image" "fit")
+                                [:h2] (enlive/add-class "title-heading"))
                      (as-html))
            :extra-scripts
            ["https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"
             "https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"]
            :extra-styles
-           ["https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"]}))
+           ["https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"]
+
+           }
+
+          ))

@@ -44,6 +44,7 @@
       <link rel="stylesheet" href="/assets/css/main.css" />
       <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
       <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+      <link rel="alternate" type="application/rss+xml" title="Epiccastle.io Updates" href="https://epiccastle.io/blog/feed.xml"/>
       {% if extra-styles %}
       {% for style in extra-styles %}
       <link href="{{style}}" rel="stylesheet"/>
@@ -60,9 +61,11 @@
 
       <!-- Header -->
       <header id="header">
-        <img src="/images/logo.png" alt="" />
-        <h1 id="logo">
-          <a href="/">EPIC CASTLE</a>
+        <a href="/" style="border-bottom: none;">
+          <img src="/images/logo.png" alt="" />
+        </a>
+        <h1 id="logo-heading" style="font-family: 'Varela Round', sans-serif;">
+          EPIC CASTLE
         </h1>
         <nav id="nav">
           <ul>

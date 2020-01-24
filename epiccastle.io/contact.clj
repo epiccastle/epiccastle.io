@@ -2,7 +2,7 @@
         {:title "Contact Us"
          :body
          (as-html
-          [:div#main.wrapper.style1
+          [:div#main.wrapper.style1 {:style {:padding-top "0px"}}
            [:div.container
             [:header.major
              [:section

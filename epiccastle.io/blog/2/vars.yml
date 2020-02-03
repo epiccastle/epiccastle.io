@@ -1,0 +1,10 @@
+title: Tiny Enlive Transformer Implements update-in
+blurb: Useful little enlive snippet. Implements the behaviour of clojure's update-in function for use inside enlive/at
+author: Crispin Wellington
+date: Jan 23, 2020
+rss-date: "Thu, 23 Jan 2020 15:58:40 +0800"
+
+splash:
+  image: splash-20.png
+  author: Dean Brierley
+  url: "https://unsplash.com/@milkandbourbons?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge"

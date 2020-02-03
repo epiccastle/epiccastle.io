@@ -1,4 +1,6 @@
 (require '[clojure.string :as string])
+(import [java.time OffsetDateTime]
+        [java.time.format DateTimeFormatter])
 
 (defn overview [body]
   (-> body
@@ -18,6 +20,22 @@
       (string/replace "<" "&lt;")
       (string/replace ">" "&gt;")
       (string/replace "\"" "&quot;")))
+
+(defn string->datetime [s]
+  (OffsetDateTime/parse s DateTimeFormatter/RFC_1123_DATE_TIME))
+
+(defn datetime->string [dt]
+  (.format dt DateTimeFormatter/RFC_1123_DATE_TIME))
+
+(def now (OffsetDateTime/now))
+(def now-string (datetime->string now))
+
+(defn render-post [{:keys [splash author body snake-title]}]
+  (-> [[:img.blog-splash {:src (:image splash) :alt author :style {:width "50%"}}]]
+      (concat body)
+      (enlive/at
+       [:img] (el-update-in
+               [:attrs :src] #(str "https://epiccastle.io/blog/" snake-title "/" %)))))
 
 (let [posts
       (->> (for [filename (glob "*/vars.yml")]
@@ -75,40 +93,31 @@
                [:div [:b blurb]]
                [:div {:style {:font-size  "10pt"}} (overview body)]]
               [:br]]))]]
+
   ;; rss feed
   (spit "feed.xml"
-        (-> (as-html
-             [:rss {:version "2.0"}
-              [:channel
-               [:title "Epiccastle Blog"]
-               [:description "Epiccastle.io Updates"]
-               [:link2 "https://epiccastle.io/blog/"]
-               ;; date +"%a, %d %b %Y %H:%M:%S %z"
-               [:last-build-date "Thu, 23 Jan 2020 15:58:40 +0800"]
-               [:pubDate "Wed, 06 Nov 2019 16:20:00 +0000"]
-               [:ttl "1800"]
-               (for [[n {:keys [snake-title
-                                title
-                                blurb
-                                author
-                                date
-                                splash
-                                rss_date
-                                body]}] (reverse (sort posts))]
-                 [:item
-                  [:title title]
-                  [:description #_ blurb
-                   (escape-html (as-html
-                                 (-> (concat [[:img.blog-splash {:src (:image splash) :alt author :style {:width "50%"}}]] body)
-                                     (enlive/at [:img] (el-update-in [:attrs :src] #(str "https://epiccastle.io/blog/" snake-title "/" %)) )
-                                     )
-                                 ))]
-                  [:link2 (str "https://epiccastle.io/blog/" snake-title)]
-                  [:gid snake-title]
-                  [:pubDate rss_date]])]])
-            (string/replace #"link2" "link")
-            (string/replace #"last-build-date" "LastBuildDate")
-            (string/replace #"pubdate" "pubDate")))
+        (-> [:rss {:version "2.0"}
+             [:channel
+              [:title "Epiccastle Blog"]
+              [:description "Epiccastle.io Updates"]
+              [:link "https://epiccastle.io/blog/"]
+              [:lastBuildDate now-string]
+              [:pubDate now-string]
+              [:ttl "1440"]
+              (for [[n {:keys [snake-title
+                               title
+                               rss-date]
+                        :as post-data}] (reverse (sort posts))]
+                [:item
+                 [:title title]
+                 [:description (-> post-data
+                                   render-post
+                                   as-html
+                                   escape-html)]
+                 [:link (str "https://epiccastle.io/blog/" snake-title)]
+                 [:gid snake-title]
+                 [:pubDate rss-date]])]]
+            (convert-to :xml)))
 
   ;; summary page
   (selmer "../templates/site.html"

@@ -2,7 +2,7 @@ title: Setting Up Acmetool With Route53 Hooks
 blurb: "Get free Let's Encrypt SSL certificates using Acmetool's DNS Hooks option when using Amazon Route53 as your DNS service provider."
 author: Crispin Wellington
 date: Nov 6, 2019
-rss_date: "Wed, 06 Nov 2019 16:20:00 +0000"
+rss-date: "Wed, 06 Nov 2019 16:20:00 +0000"
 
 splash:
   image: splash-20.png

@@ -50,9 +50,7 @@
                                    (->> (string/join "-")))
                    vars (assoc vars
                                :snake-title snake-title
-                               :body (markdown (str n "/body.md"))
-                               )
-                   ]
+                               :body (markdown (str n "/body.md")))]
                [n vars]))
            (into {}))
 

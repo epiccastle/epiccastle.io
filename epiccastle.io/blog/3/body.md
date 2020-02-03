@@ -78,7 +78,7 @@ I needed to escape the html markup to embed it in the xml description tag with t
       (string/replace "\"" "&quot;")))
 ```
 
-And my `now-string` variable I generate with the following simple little time at the top of my file:
+And my `now-string` variable I generate with the following simple code at the top of my file:
 
 ```clojure
 (import [java.time OffsetDateTime]

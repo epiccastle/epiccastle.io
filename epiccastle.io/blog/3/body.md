@@ -95,4 +95,4 @@ And my `now-string` variable I generate with the following simple little time at
 
 ```
 
-You can see the actual source for this process [here](https://github.com/epiccastle/epiccastle.io/blob/master/epiccastle.io/blog/index.clj).
+You can see the actual source for this process [here](https://github.com/epiccastle/epiccastle.io/blob/bce74a8baa757828e510dc463b8b054bf7b4f377/epiccastle.io/blog/index.clj).

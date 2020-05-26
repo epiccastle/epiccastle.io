@@ -38,5 +38,8 @@ spire-analysis:
 	rm spire-analysis.edn
 	-clj-kondo --lint ../spire/src/ --config '{:output {:analysis true :format :edn}}' > spire-analysis.edn
 
-epiccastle.io/blog/%/splash-20.png: epiccastle.io/blog/%/splash.png
+epiccastle.io/blog/%/splash-20.jpg: epiccastle.io/blog/%/splash.jpg
+	convert $< -resize 1000000@ $@
+
+epiccastle.io/blog/%/splash-20.jpg: epiccastle.io/blog/%/splash.jpg
 	convert $< -resize 1000000@ $@

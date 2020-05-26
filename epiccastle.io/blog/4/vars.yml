@@ -1,0 +1,10 @@
+title: Faster GraalVM Clojure Compilation Times
+blurb: Slash those GraalVM native-image compilation times with this one wierd trick!
+author: Crispin Wellington
+date: May 26, 2020
+rss-date: "Tue, 26 May 2020 00:46:05 +0800"
+
+splash:
+  image: splash-20.jpg
+  author: Muhammad Haikal Sjukri
+  url: "https://unsplash.com/@pantiumforce?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge"

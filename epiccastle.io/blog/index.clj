@@ -121,7 +121,7 @@
   (selmer "../templates/site.html"
           {:title "Blog Posts"
            :body (as-html
-                  [:div#main.wrapper.style1 {:style {:padding-top "0px"}}
+                  [:div#main.wrapper.style1
                    [:div.container
                     [:div {:style {:float "right" :padding-top "16px"}}
                      [:a {:href "feed.xml"

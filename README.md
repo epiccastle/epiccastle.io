@@ -21,3 +21,10 @@ The site is built using [bootleg](https://github.com/retrogradeorbit/bootleg). I
 ## Deploy
 
     make deploy
+
+## Spire pages
+
+To generate the spire site pages you will need to have spire project
+checked out as a sibling directory to the root of this
+directory. ie. going `cd ../spire` from this directory takes you to
+the spire root.

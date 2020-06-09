@@ -50,7 +50,7 @@ sys	1m56.493s
 
 ```
 
-Wow! Analysis is not down to only 1 hour and 50 minutes! Good times!
+Wow! Analysis is now down to only 1 hour and 50 minutes! Good times!
 
 So this leads me to wonder how Michiel ([@borkdude](https://twitter.com/borkdude)) is building his babashka images on Circle CI without hitting the wall. I go over to have a look at his [Circle CI builds](https://circleci.com/gh/borkdude/babashka/9392). They are building his images in **less that 5 minutes**.... whaaaaaaat?
 
@@ -103,7 +103,7 @@ sys	0m12.756s
 
 ```
 
-Down from 3½ hours... to a little under **3 minutes**. And amazing improvement!
+Analysis is down from 3½ hours... to a little under **3 minutes**. And amazing improvement!
 
 #### Summary
 

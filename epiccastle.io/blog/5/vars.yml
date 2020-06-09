@@ -1,0 +1,10 @@
+title: Combining doseq and loadLibrary Considered Harmful
+blurb: Strange errors and crashes from the land of javacpp and Qt
+author: Crispin Wellington
+date: Jun 9, 2020
+rss-date: "Tue, 9 June 2020 14:12:15 +0800"
+
+splash:
+  image: splash-20.jpg
+  author: Annie Spratt
+  url: "https://unsplash.com/@anniespratt?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge"

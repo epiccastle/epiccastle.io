@@ -4,7 +4,7 @@ Source code for website for https://epiccastle.io
 
 ## Dependency
 
-The site is built using [bootleg](https://github.com/retrogradeorbit/bootleg). Install bootleg using the instructions on that page.
+The site is built using [babashka](https://github.com/babashka/babashka). Install babashka using the instructions on that page.
 
 ## Building
 

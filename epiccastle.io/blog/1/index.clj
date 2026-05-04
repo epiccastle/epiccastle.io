@@ -1,10 +1,11 @@
+(load-file "../../lib.clj")
+(refer 'lib)
 (require '[clojure.string :as string])
 
 (def words-per-minute 150)
 
 (defn word-count [data]
-  (-> data
-      (convert-to :html)
+  (-> (as-html data)
       (string/replace #"<[^>]+>" " ")
       string/trim
       (string/split #"\s+")
@@ -21,21 +22,17 @@
       vars (assoc vars
                   :read-time (read-time-minutes body)
                   :body (-> body
-                            (enlive/at [:img] (enlive/add-class "image" "fit")
-                                       [:pre] (enlive/set-attr "style" "border-radius:8px;margin-bottom:32px;")
-                                       [:code] (enlive/set-attr "style" "padding:0px;")
-                                       )
-                            (convert-to :html)))]
-  (selmer "../../templates/site.html"
-          {:title title
-           :body (-> (selmer "../../templates/blog.html" vars)
-                     (enlive/at [:img.blog-splash] (enlive/add-class "image" "fit")
-                                [:h2] (enlive/add-class "title-heading"))
-                     (as-html))
-           :extra-scripts
-           ["https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"
-            "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"]
-           :extra-styles
-           ["https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"]
-
-           }))
+                            (enlive-at [:img] (enlive-add-class "image" "fit")
+                                       [:pre] (enlive-set-attr "style" "border-radius:8px;margin-bottom:32px;")
+                                       [:code] (enlive-set-attr "style" "padding:0px;"))
+                            as-html))]
+  (output!
+   (selmer "../../templates/site.html"
+           {:title title
+            :body (-> (selmer "../../templates/blog.html" vars)
+                      as-html)
+            :extra-scripts
+            ["https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"
+             "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"]
+            :extra-styles
+            ["https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"]})))

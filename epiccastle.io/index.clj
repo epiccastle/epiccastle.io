@@ -1,3 +1,6 @@
+(load-file "lib.clj")
+(refer 'lib)
+
 (def icon-layout
   [{:icon "fa-code-branch.png"
     :heading "Infrastructure as Code"
@@ -73,50 +76,51 @@
     :margin-top "1.5em"
     :image "postgres.png"}])
 
-(selmer "templates/site.html"
-        {:landing true
-         :body
-         (as-html
-          [[:section#banner
-            [:div.content
-             [:header
-              [:h2 "Building or scaling your enterprise?"]
-              [:p "Reduce pain, free your time and grow" "\u00A0"
-               [:br] "more quickly with smart devops."]
-              [:ul.actions {:style {:margin-top "3em"}}
-               [:li [:a.button {:href "/contact.html"} "Contact Us"]]]]]
-            [:a.goto-next.scrolly {:href "#four"} "Next"]]
+(output!
+ (selmer "templates/site.html"
+         {:landing true
+          :body
+          (as-html
+           [[:section#banner
+             [:div.content
+              [:header
+               [:h2 "Building or scaling your enterprise?"]
+               [:p "Reduce pain, free your time and grow" "\u00A0"
+                [:br] "more quickly with smart devops."]
+               [:ul.actions {:style {:margin-top "3em"}}
+                [:li [:a.button {:href "/contact.html"} "Contact Us"]]]]]
+             [:a.goto-next.scrolly {:href "#four"} "Next"]]
 
-           [:section#four.wrapper.style1.special.fade-up
-            [:div.container
-             [:header.major
-              [:h2 "Our Services"]]
-             [:div.box.alt
-              [:div.row.uniform
+            [:section#four.wrapper.style1.special.fade-up
+             [:div.container
+              [:header.major
+               [:h2 "Our Services"]]
+              [:div.box.alt
+               [:div.row.uniform
 
-               (for [{:keys [icon heading body class]} icon-layout]
-                 [:section {:class class}
-                  [:span.icon.alt.major
-                   [:img {:style {:width "50%"
-                                  :vertical-align "middle"}
-                          :src (str "/images/" icon)}]]
-                  [:h3 heading]
-                  [:p body]])]]
+                (for [{:keys [icon heading body class]} icon-layout]
+                  [:section {:class class}
+                   [:span.icon.alt.major
+                    [:img {:style {:width "50%"
+                                   :vertical-align "middle"}
+                           :src (str "/images/" icon)}]]
+                   [:h3 heading]
+                   [:p body]])]]
 
-             [:footer.major
-              [:ul.actions
-               [:li [:a.button {:href "/contact.html"} "Contact"]]]]]]
+              [:footer.major
+               [:ul.actions
+                [:li [:a.button {:href "/contact.html"} "Contact"]]]]]]
 
-           [:section#five.wrapper.style2.special.fade
-            [:div.container
-             [:header
-              [:h2 "Our Toolkit"]
-              [:p [:i "If I have seen further it is by standing on the shoulders of Giants."] " — Isaac Newton"]]
-             [:div.crsl-items {:data-navigation "crsl-nav-tools"}
-              [:div.crsl-wrap
-               (for [{:keys [width margin-top image]} carousel-layout]
-                 [:figure.crsl-item
-                  [:img {:style {:vertical-position "middle"
-                                 :width (or width "100%")
-                                 :margin-top (or margin-top "1em")}
-                         :src (str "/images/logos/" image)}]])]]]]])})
+            [:section#five.wrapper.style2.special.fade
+             [:div.container
+              [:header
+               [:h2 "Our Toolkit"]
+               [:p [:i "If I have seen further it is by standing on the shoulders of Giants."] " \u2014 Isaac Newton"]]
+              [:div.crsl-items {:data-navigation "crsl-nav-tools"}
+               [:div.crsl-wrap
+                (for [{:keys [width margin-top image]} carousel-layout]
+                  [:figure.crsl-item
+                   [:img {:style {:vertical-position "middle"
+                                  :width (or width "100%")
+                                  :margin-top (or margin-top "1em")}
+                          :src (str "/images/logos/" image)}]])]]]]])}))

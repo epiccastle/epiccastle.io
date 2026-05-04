@@ -1,3 +1,6 @@
+(load-file "lib.clj")
+(refer 'lib)
+
 ;; find epiccastle.io -name '*.html'
 (def pages
   [
@@ -41,13 +44,13 @@
    "https://epiccastle.io/spire/modules.html"
    "https://epiccastle.io/spire/tutorial.html"])
 
-(str
- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+(output!
+ (str
+  "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
- (apply str
-        (for [page pages]
-          (format
-           "<url><loc>%s</loc><lastmod>2021-08-19</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>"
-           page)))
- "</urlset>"
- )
+  (apply str
+         (for [page pages]
+           (format
+            "<url><loc>%s</loc><lastmod>2021-08-19</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>"
+            page)))
+  "</urlset>"))

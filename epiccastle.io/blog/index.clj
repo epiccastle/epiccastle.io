@@ -1,12 +1,14 @@
+(load-file "../lib.clj")
+(refer 'lib)
 (require '[clojure.string :as string])
 (import [java.time OffsetDateTime]
-        [java.time.format DateTimeFormatter])
+        [java.time.format DateTimeFormatter DateTimeFormatterBuilder]
+        [java.util Locale])
 
 (defn overview [body]
-  (-> body
-      (convert-to :hiccup-seq)
-      (->> (filter #(= :p (first %))))
-      first))
+  (->> body
+       (filter #(and (vector? %) (= :p (first %))))
+       first))
 
 (defn el-update-in [path func & func-args]
   (fn [el]
@@ -21,8 +23,27 @@
       (string/replace ">" "&gt;")
       (string/replace "\"" "&quot;")))
 
+;; Lenient RFC-1123-ish parsers: accept both abbreviated ("Aug") and full
+;; ("August") month names, and 1- or 2-digit days.
+(def ^:private lenient-rfc1123-parsers
+  (mapv #(-> (DateTimeFormatterBuilder.)
+             (.parseCaseInsensitive)
+             (.appendPattern %)
+             (.toFormatter Locale/ENGLISH))
+        ["EEE, d MMM yyyy HH:mm:ss Z"
+         "EEE, d MMMM yyyy HH:mm:ss Z"]))
+
 (defn string->datetime [s]
-  (OffsetDateTime/parse s DateTimeFormatter/RFC_1123_DATE_TIME))
+  (loop [[fmt & more] lenient-rfc1123-parsers
+         last-exc nil]
+    (if (nil? fmt)
+      (throw last-exc)
+      (let [result (try
+                     (OffsetDateTime/parse s fmt)
+                     (catch java.time.format.DateTimeParseException e e))]
+        (if (instance? java.time.format.DateTimeParseException result)
+          (recur more result)
+          result)))))
 
 (defn datetime->string [dt]
   (.format dt DateTimeFormatter/RFC_1123_DATE_TIME))
@@ -32,11 +53,14 @@
 (def atom-now-string (.format now DateTimeFormatter/ISO_OFFSET_DATE_TIME))
 
 (defn render-post [{:keys [splash author body snake-title]}]
-  (-> [[:img.blog-splash {:src (:image splash) :alt author :style {:width "50%"}}]]
-      (concat body)
-      (enlive/at
-       [:img] (el-update-in
-               [:attrs :src] #(str "https://epiccastle.io/blog/" snake-title "/" %)))))
+  (-> (concat [[:img.blog-splash {:src (:image splash) :alt author :style {:width "50%"}}]]
+              body)
+      (enlive-at
+       [:img] (fn [el]
+                (let [el (if (map? (second el))
+                           el
+                           (into [(first el) {}] (rest el)))]
+                  (update-in el [1 :src] #(str "https://epiccastle.io/blog/" snake-title "/" %)))))))
 
 (let [posts
       (->> (for [filename (glob "*/vars.yml")]
@@ -73,8 +97,7 @@
                [:img.image.right
                 {:src (str n "/" (:image splash))
                  :style {:width "25%"
-                         :margin-top "6rem"}
-                 }]
+                         :margin-top "6rem"}}]
                [:div {:style {:display "flex"
                               :justify-content "left"
                               :padding-bottom "32px"}}
@@ -91,43 +114,52 @@
                    date]]]]
 
                [:div [:b blurb]]
-               [:div {:style {:font-size  "1.2rem"}} (overview body)]]
+               [:div {:style {:font-size "1.2rem"}} (overview body)]]
               [:br]]))]]
 
-  ;; rss feed
+  ;; atom feed
   (spit "feed.xml"
-        (-> [:rss {:version "2.0"}
-             [:channel
-              [:title "Epiccastle Blog"]
-              [:description "Epiccastle.io Updates"]
-              [:link "https://epiccastle.io/blog/"]
-              [:lastBuildDate now-string]
-              [:pubDate now-string]
-              [:ttl "1440"]
-              (for [[n {:keys [snake-title
-                               title
-                               rss-date]
-                        :as post-data}] (reverse (sort posts))]
-                [:item
-                 [:title title]
-                 [:description (-> post-data
-                                   render-post
-                                   as-html
-                                   escape-html)]
-                 [:link (str "https://epiccastle.io/blog/" snake-title)]
-                 [:gid snake-title]
-                 [:pubDate rss-date]])]]
-            (convert-to :xml)))
+        (convert-to
+         [:feed {:xmlns "http://www.w3.org/2005/Atom"}
+          [:title "Epiccastle Blog"]
+          [:subtitle "Epiccastle.io Updates"]
+          [:link {:href "https://epiccastle.io/blog/feed.xml" :rel "self"}]
+          [:link {:href "https://epiccastle.io/blog/"}]
+          [:id "https://epiccastle.io/blog/"]
+          [:updated atom-now-string]
+          [:author
+           [:name "Crispin Wellington"]]
+          (for [[n {:keys [snake-title
+                           title
+                           rss-date
+                           author]
+                    :as post-data}] (reverse (sort posts))]
+            (let [entry-url (str "https://epiccastle.io/blog/" snake-title)
+                  entry-updated (.format (string->datetime rss-date)
+                                         DateTimeFormatter/ISO_OFFSET_DATE_TIME)]
+              [:entry
+               [:title title]
+               [:link {:href entry-url}]
+               [:id entry-url]
+               [:updated entry-updated]
+               [:published entry-updated]
+               (when author [:author [:name author]])
+               [:content {:type "html"}
+                [:-cdata (-> post-data
+                             render-post
+                             as-html)]]]))]
+         :xml))
 
   ;; summary page
-  (selmer "../templates/site.html"
-          {:title "Blog Posts"
-           :body (as-html
-                  [:div#main.wrapper.style1
-                   [:div.container
-                    [:div {:style {:float "right" :padding-top "16px"}}
-                     [:a {:href "feed.xml"
-                          :style "border-bottom: none;"}
-                      [:img {:alt "rss feed" :src "/images/rss-small.png"}]]]
-                    [:h1.title-heading "Blog"]
-                    summaries]])}))
+  (output!
+   (selmer "../templates/site.html"
+           {:title "Blog Posts"
+            :body (as-html
+                   [:div#main.wrapper.style1
+                    [:div.container
+                     [:div {:style {:float "right" :padding-top "16px"}}
+                      [:a {:href "feed.xml"
+                           :style "border-bottom: none;"}
+                       [:img {:alt "rss feed" :src "/images/rss-small.png"}]]]
+                     [:h1.title-heading "Blog"]
+                     summaries]])})))

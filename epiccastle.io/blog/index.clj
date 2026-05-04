@@ -29,6 +29,7 @@
 
 (def now (OffsetDateTime/now))
 (def now-string (datetime->string now))
+(def atom-now-string (.format now DateTimeFormatter/ISO_OFFSET_DATE_TIME))
 
 (defn render-post [{:keys [splash author body snake-title]}]
   (-> [[:img.blog-splash {:src (:image splash) :alt author :style {:width "50%"}}]]
@@ -69,15 +70,16 @@
               [:div {:style {:cursor "pointer"}
                      :onclick (str "window.location='" snake-title "'")}
                [:h2 {:style {:margin-bottom "16px"}} title]
-               [:img.image.fit.right
+               [:img.image.right
                 {:src (str n "/" (:image splash))
-                 :style {:width "25%"}
+                 :style {:width "25%"
+                         :margin-top "6rem"}
                  }]
                [:div {:style {:display "flex"
                               :justify-content "left"
                               :padding-bottom "32px"}}
                 [:div {:style {:display "flex"}}
-                 [:img {:src "/images/people/crispin.jpg"
+                 [:img {:src "/images/people/crispin-wellington.jpg"
                         :style {:width "48px"
                                 :height "48px"
                                 :border-radius "50%"}}]
@@ -89,7 +91,7 @@
                    date]]]]
 
                [:div [:b blurb]]
-               [:div {:style {:font-size  "10pt"}} (overview body)]]
+               [:div {:style {:font-size  "1.2rem"}} (overview body)]]
               [:br]]))]]
 
   ;; rss feed

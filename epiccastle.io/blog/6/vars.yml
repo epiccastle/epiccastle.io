@@ -1,0 +1,11 @@
+title: Hot loading WASM
+blurb: Hot loading C wasm into the browser while preserving the state of the heap
+author: Crispin Wellington
+date: Mar 21, 2022
+rss-date: "Mon, 21 March 2022 16:04:07 +0800"
+
+splash:
+  image: splash-20.jpg
+  author: Dorothea OLDANI
+  url: "https://unsplash.com/@dorographie?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge"
+  caption: Belogradchik, Bulgaria

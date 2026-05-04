@@ -23,9 +23,14 @@
                   :body (-> body
                             (enlive/at [:img] (enlive/add-class "image" "fit")
                                        [:pre] (enlive/set-attr "style" "border-radius:8px;margin-bottom:32px;")
-                                       [:code] (enlive/set-attr "style" "padding:0px;")
+                                       [:code] (enlive/set-attr "style" "padding:5px;font-size:1em;")
+                                       [:code.clojure] (enlive/add-class "language-clojure")
+                                       [:code.cpp] (enlive/add-class "language-cpp")
+                                       [:code.makefile] (enlive/add-class "language-makefile")
+                                       [:pre] (enlive/add-class "language-")
                                        )
-                            (convert-to :html)))]
+                            (convert-to :html)))
+      ]
   (selmer "../../templates/site.html"
           {:title title
            :body (-> (selmer "../../templates/blog.html" vars)
@@ -38,4 +43,6 @@
            :extra-styles
            ["https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"]
 
-           }))
+           }
+
+          ))

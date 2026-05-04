@@ -62,3 +62,7 @@ In this working implementation, each `loadLibrary` call is issued and the progra
 ### The Culprit?
 
 Looking at the source of `doseq` [here](https://github.com/clojure/clojure/blob/clojure-1.10.1/src/clj/clojure/core.clj#L3216) we see that doseq is not inherently multi-threaded, but it does contain code to support chunked sequences. I don't have time to unravel exactly what `doseq` is doing here that is causing the crisis, but let it be known: **keep your loadLibrary calling code single threaded**
+
+### Addendum
+
+I never did get around to writing up the true cause of this issue. But it was not doseq at all. Or clojure. Or the JVM. It turned out to be Qt. For some unknown reason compiling Qt from source on a Debian based machine (I was using Ubuntu) led to a faulty set of binaries being created. When I switched to compiling it on CentOS it generated a set of binaries that behaved correctly. I did not have the stamina to uncover why this is so. Since then I have given up using Qt. It is huge. It is complex. I do not trust it!

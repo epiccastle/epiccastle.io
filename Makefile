@@ -1,13 +1,15 @@
 CLJ := $(shell find ./epiccastle.io/ -name "*.clj")
-SPLASH := $(shell find ./epiccastle.io/ -name "splash.png")
+SPLASH_PNG := $(shell find ./epiccastle.io/ -name "splash.png")
+SPLASH_JPG := $(shell find ./epiccastle.io/ -name "splash.jpg")
 BUILD := $(patsubst %.clj,%.html,$(CLJ))
-SPLASH_BUILD := $(patsubst %.png,%-20.png,$(SPLASH))
+SPLASH_PNG_BUILD := $(patsubst %.png,%-20.png,$(SPLASH_PNG))
+SPLASH_JPG_BUILD := $(patsubst %.jpg,%-20.jpg,$(SPLASH_JPG))
 TEMPLATES := $(shell find ./epiccastle.io/templates -name "*.html")
 BOOTLEG := bootleg
 #BOOTLEG := java -jar ../bootleg/target/uberjar/bootleg-0.1.7-SNAPSHOT-standalone.jar
 
 runserver:
-	cd epiccastle.io && python -m CGIHTTPServer 8000
+	cd epiccastle.io && python -m http.server --cgi 8000
 
 deploy: clean build
 	rsync -av \
@@ -22,7 +24,8 @@ deploy: clean build
 epiccastle.io/%.html: epiccastle.io/%.clj $(TEMPLATES)
 	$(BOOTLEG) -o $@ $<
 
-build: $(BUILD) $(SPLASH_BUILD)
+build: $(BUILD) $(SPLASH_PNG_BUILD) $(SPLASH_JPG_BUILD)
+	mv epiccastle.io/sitemap.html epiccastle.io/sitemap.xml
 
 clean:
 	-rm -f $(BUILD)
